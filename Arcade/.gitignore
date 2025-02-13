@@ -1,0 +1,13 @@
+.vscode/
+*.o
+*.a
+*.log
+*.txt
+a.out
+vgcore.*
+test.*
+*.test
+*.so
+*.c
+*.h
+arcade

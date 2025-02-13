@@ -1,0 +1,129 @@
+@startuml
+
+package arcade {
+
+enum KeyBind {
+    UNKNOWN
+    QUIT_EVENT
+    A_KEY
+    B_KEY
+    C_KEY
+    D_KEY
+    E_KEY
+    F_KEY
+    G_KEY
+    H_KEY
+    I_KEY
+    J_KEY
+    K_KEY
+    L_KEY
+    M_KEY
+    N_KEY
+    O_KEY
+    P_KEY
+    Q_KEY
+    R_KEY
+    S_KEY
+    T_KEY
+    U_KEY
+    V_KEY
+    W_KEY
+    X_KEY
+    Y_KEY
+    Z_KEY
+    NUM0_KEY
+    NUM1_KEY
+    NUM2_KEY
+    NUM3_KEY
+    NUM4_KEY
+    NUM5_KEY
+    NUM6_KEY
+    NUM7_KEY
+    NUM8_KEY
+    NUM9_KEY
+    LEFT_MOUSE_KEY
+    RIGHT_MOUSE_KEY
+    LEFT_KEY
+    RIGHT_KEY
+    UP_KEY
+    DOWN_KEY
+    ENTER_KEY
+    SPACE_KEY
+    ESCAPE_KEY
+    BACKSPACE_KEY
+}
+
+enum BlockType {
+    UNKNOWN
+    WALL
+    PLAYER
+    GROUND
+    APPLE
+    SNAKE_HEAD
+    SNAKE_BODY
+    DOTS
+    RED_GHOST
+    PINK_GHOST
+    BLUE_GHOST
+    YELLOW_GHOST
+    POWER_PELLETS
+    SHOT
+    MUSHROOM
+    CENTIPEDE_HEAD
+    CENTIPEDE_BODY
+}
+
+enum Direction {
+    NONE
+    LEFT
+    RIGHT
+    UP
+    DOWN
+}
+
+struct Position {
+    int x
+    int y
+}
+
+struct Event {
+    KeyBind bind
+    Position pos
+}
+
+struct MapData {
+    BlockType type;
+    Position pos;
+    Direction direction;
+}
+
+Class IDisplay {
+    public:
+        virtual ~IDisplay() = default
+        virtual void clear() = 0
+        virtual void refresh() = 0
+        virtual struct arcade::Event pollEvent() = 0
+        virtual void displayBlock(const struct arcade::MapData &) = 0
+        virtual void displayText(const std::string &, const Position &) = 0
+}
+
+class IGame {
+    public:
+        virtual ~IGame() = default
+        virtual void applyCommand(const arcade::KeyBind &) = 0
+        virtual std::vector<arcade::MapData> getMap() = 0
+        virtual std::size_t getScore() = 0
+        virtual bool isEnd() = 0
+}
+
+KeyBind --> Event
+BlockType --> MapData
+Direction --> MapData
+Position --> MapData
+Position --> Event
+MapData --> IGame
+MapData --> IDisplay
+Event --> IDisplay
+KeyBind --> IGame
+
+@enduml
