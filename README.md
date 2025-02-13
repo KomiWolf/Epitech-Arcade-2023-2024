@@ -43,7 +43,7 @@ Le but est de construire un **framework modulaire** capable de charger dynamique
 Ce projet a été réalisé en trio avec :  
 
 - [**Harleen**](https://github.com/Harleen-sk) – 🎨 **Gestion des bibliothèques graphiques**
-- [**OrionP4X**](https://github.com/OrionPX4k) – 🕹 **Développement des jeux**
+- [**OrionPX4K**](https://github.com/OrionPX4k) – 🕹 **Développement des jeux**
 - **Moi** – 🏗 **Architecture du projet & Coeur de l'arcade**
 
 ---
